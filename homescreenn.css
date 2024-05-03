@@ -1,0 +1,47 @@
+html{
+    background-color:deepskyblue;
+    background-image: url('https://piskel-imgstore-b.appspot.com/img/f6190bd7-097b-11ef-bbb2-d30b9e7094e1.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.container{
+    max-width: 1300px;
+}
+
+.content{
+    position: absolute;
+    padding: 10px;
+    background-color: goldenrod;
+    border-right: darkgoldenrod 5px solid;
+    width: 700px;
+    height: 953px;
+    left: 0px;
+    bottom: 0px;
+    top: 0px;
+}
+a.button1 {
+    text-align: center;
+    text-decoration: none;
+    position: absolute;
+    right: 240px;
+    left: 280px;
+    width: 160px;
+    height: 80px;
+    font-size: 40px;
+    transition-duration: 1s;
+    border-color: grey;
+    border-radius: 12px;
+    background-color: dimgrey;
+    color:white;
+    font-family: 'Pixelify Sans';
+    box-shadow: 3px 6px grey;
+}
+.button1:hover {
+    background-color: forestgreen; /* Green */
+    color: black;
+}
+.p1{
+    font-family: 'Pixelify Sans';
+    font-size: 100px;
+    text-align: center;
+}
