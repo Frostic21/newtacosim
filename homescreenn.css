@@ -3,6 +3,7 @@ html{
     background-image: url('https://piskel-imgstore-b.appspot.com/img/f6190bd7-097b-11ef-bbb2-d30b9e7094e1.gif');
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: 100%;
 }
 .container{
     max-width: 1300px;
@@ -11,37 +12,47 @@ html{
 .content{
     position: absolute;
     padding: 10px;
-    background-color: goldenrod;
+    background-color: blue;
+    background-size: 100%;
+    background-image: url("https://cdn.pixilart.com/photos/large/6de6c5e28263313.png");
     border-right: darkgoldenrod 5px solid;
-    width: 700px;
-    height: 953px;
+    width: 600px;
+    height: auto;
     left: 0px;
     bottom: 0px;
     top: 0px;
+}
+.Buttons{
+    margin:10px;
 }
 a.button1 {
     text-align: center;
     text-decoration: none;
     position: absolute;
-    right: 240px;
-    left: 280px;
-    width: 160px;
-    height: 80px;
+    left: 60px;
+    width: auto;
+    height: 50px;
     font-size: 40px;
-    transition-duration: 1s;
+    transition-duration: 0.7s;
+    border-style: solid;
     border-color: grey;
     border-radius: 12px;
-    background-color: dimgrey;
+    padding: 4px;
+    background-color: cadetblue;
     color:white;
     font-family: 'Pixelify Sans';
-    box-shadow: 3px 6px grey;
 }
 .button1:hover {
-    background-color: forestgreen; /* Green */
-    color: black;
+    width: auto;
+    height: 60px;
+    text-align: center;
+    font-size: 50px;
 }
 .p1{
     font-family: 'Pixelify Sans';
-    font-size: 100px;
+    font-size: 50px;
     text-align: center;
+    border: black solid 3px;
+    border-radius: 12px;
+    background-color: cornflowerblue;
 }

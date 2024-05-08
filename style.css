@@ -3,10 +3,13 @@
     vertical-align: middle;
     justify-content: center;
 }
-body, html{
+html{
     background-image: url("https://art.pixilart.com/sr295894745beaws3.png");
     background-size: 100%;
     background-repeat: no-repeat;
+    background-color: grey;
+}
+body, html{
     align-content: center;
     font-family: 'Pixelify Sans';
 }
