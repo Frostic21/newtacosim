@@ -72,7 +72,7 @@ let autobuythingy=0;
 let bonusCounter = 0;
 let bonus=1;
 let update = 1;
-let autoRequirement= 1000;
+let autoRequirement= 5000;
 let shopRequirement= 20;
 let randomButtonMashCounter = 0;
 let eventImmune;
@@ -82,10 +82,10 @@ let autoUpdateConst;
 let button1;
 let payTaxes;
 let randomNumber = 0;
-let toppingsRequirement = 200;
+let toppingsRequirement = 2000;
 let taxAmount = 0;
 let fancy = 1;
-let fancyRequirement = 5000
+let fancyRequirement = 50000
 const taco = document.getElementById('taco');
 const scoreList = document.getElementById('score');
 const shop = document.getElementById('shop');
@@ -131,10 +131,12 @@ reset.addEventListener('click', function(){
     bonusCounter = 0;
     bonus=1;
     update = 1;
-    autoRequirement= 500;
+    autoRequirement= 5000;
     shopRequirement= 20;
     update = 1;
-    toppingsRequirement = 200;
+    autoRequirement= 5000;
+    shopRequirement= 20;
+    toppingsRequirement = 2000;
     totalTacos.textContent = `Total Tacos Sold per Click: ${update * bonus}`;
     scoreList.textContent = `Money: $${score}`;
     shop.textContent = `More Tacos: $${shopRequirement}`;
@@ -192,7 +194,7 @@ function randomEvents() {
     } else {
         if (randomNumber >= 1 && randomNumber <= 5){
             taxMaxCounter = 60;
-            taxAmount = score * 1.5;
+            taxAmount = score * 2;
             event.textContent = `Your taxes are due in ${taxMaxCounter} seconds. (${taxAmount})`;
             taxTimerConst = setInterval(taxTimer, 1000);
             counter2 = 1;
