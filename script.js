@@ -18,6 +18,9 @@ window.onload = function (){
         bonus = parseInt(getCookie("bonus"));
         bonusCounter = parseInt(getCookie("bonus"));
     }
+    if(getCookie("fancy")){
+        fancy = parseInt(getCookie("fancy"));
+    }
     if(getCookie("shopRequirement")){
         shopRequirement = parseInt(getCookie("shopRequirement"));
     }
@@ -27,9 +30,8 @@ window.onload = function (){
     if(getCookie("toppingsRequirement")){
         toppingsRequirement = parseInt(getCookie("toppingsRequirement"));
     }
-    if (bonusCounter >= 5) {
-        pfpbuy.textContent = `Maxed Out`;
-        randomButtonMashCounter = randomButtonMashCounter + 1;
+    if(getCookie("fancyRequirement")){
+        fancyRequirement = parseInt(getCookie("fancyRequirement"));
     }
     totalTacos.textContent = `Total Tacos Sold per Click: ${update * bonus}`;
     scoreList.textContent = `Money: $${score}`;
@@ -38,7 +40,9 @@ window.onload = function (){
     automatic.textContent = `Total Earnings per Second: 0`;
     pfpbuy.textContent = `Better Toppings: $${toppingsRequirement}`;
     buyAuto.textContent = `Hire Worker: $${autoRequirement}`;
-    pfp.textContent = `Toppings Quality Multiplier: ${bonus}`
+    pfp.textContent = `Toppings Quality Multiplier: ${bonus}`;
+    buyRestaurant.textContent = `Buy Restaurant: ${fancyRequirement}`;
+    restaurant.textContent = `Fancy Multiplier : ${fancy}`;
 }
 
 function getCookie(name) {
@@ -85,7 +89,7 @@ let randomNumber = 0;
 let toppingsRequirement = 2000;
 let taxAmount = 0;
 let fancy = 1;
-let fancyRequirement = 50000
+let fancyRequirement = 50000;
 const taco = document.getElementById('taco');
 const scoreList = document.getElementById('score');
 const shop = document.getElementById('shop');
@@ -99,12 +103,12 @@ const buyAuto = document.getElementById('buyAuto');
 const event = document.getElementById('events');
 const reset = document.getElementById('reset');
 const save = document.getElementById('autSave');
-const resturant = document.getElementById('resturant');
-const buyResturant = document.getElementById('buyResturant');
+const restaurant = document.getElementById('resturant');
+const buyRestaurant = document.getElementById('buyResturant');
 
-taco.addEventListener('click', function(){
+taco.addEventListener('click', function(e){
     if (score < 2300000000000){
-        score = score + (update * bonus);
+        score = score + ((update * bonus)*fancy);
         scoreList.textContent = `Money: $${score}`;
     } else{
         if (score >= 2300000000000){
@@ -137,6 +141,8 @@ reset.addEventListener('click', function(){
     autoRequirement= 5000;
     shopRequirement= 20;
     toppingsRequirement = 2000;
+    fancy = 1;
+    fancyRequirement = 50000;
     totalTacos.textContent = `Total Tacos Sold per Click: ${update * bonus}`;
     scoreList.textContent = `Money: $${score}`;
     shop.textContent = `More Tacos: $${shopRequirement}`;
@@ -144,7 +150,9 @@ reset.addEventListener('click', function(){
     automatic.textContent = `Total Earnings per Second: 0`;
     pfpbuy.textContent = `Better Toppings: $${toppingsRequirement}`;
     buyAuto.textContent = `Hire Worker: $${autoRequirement}`;
-    pfp.textContent = `Toppings Quality Multiplier: ${bonus}`
+    pfp.textContent = `Toppings Quality Multiplier: ${bonus}`;
+    buyRestaurant.textContent = `Buy Restaurant: ${fancyRequirement}`;
+    restaurant.textContent = `Fancy Multiplier : ${fancy}`;
     setCookie("autoUpdate", autoUpdate);
     setCookie("bonus", bonus);
     setCookie("update", update);
@@ -154,11 +162,13 @@ reset.addEventListener('click', function(){
     setCookie("autobuythingy", autobuythingy);
     setCookie("autoRequirement", autoRequirement);
     setCookie("toppingsRequirement", toppingsRequirement);
-
+    setCookie("fancyRequirement", fancyRequirement);
 })
 
 eventImmune = setInterval(eventImmunity, 1000);
 setInterval(workerBuy, 1000);
+
+buyRestaurant.addEventListener('click', buyRestaurant1);
 
 function eventImmunity(){
     counter3++
@@ -271,7 +281,7 @@ function automaticTacoMaker(){
     if(score >= autoRequirement){
         autoUpdate2++
         score = score-autoRequirement;
-        autoRequirement = autoRequirement * 3;
+        autoRequirement = autoRequirement * 2;
         if (autobuythingy >= 1){
             autoUpdate = (update * bonus) * autoUpdate2;
         } else{
@@ -284,16 +294,29 @@ function automaticTacoMaker(){
     }
 }
 
+function buyRestaurant1(){
+    if(score >= fancyRequirement){
+        fancy++
+        score = score-fancyRequirement;
+        fancyRequirement = fancyRequirement * 2;
+        buyRestaurant.textContent = `Buy Restaurant: ${fancyRequirement}`;
+        scoreList.textContent = `Money: $${score}`;
+        restaurant.textContent = `Fancy Multiplier : ${fancy}`;
+    }
+}
+
 function funcAutoSave(){
     setCookie("autoUpdate", autoUpdate);
     setCookie("bonus", bonus);
     setCookie("update", update);
     setCookie("score", score);
+    setCookie("fancy",fancy);
     setCookie("shopRequirement", shopRequirement);
     setCookie("autoUpdate2", autoUpdate2);
     setCookie("autobuythingy", autobuythingy);
     setCookie("autoRequirement", autoRequirement);
     setCookie("toppingsRequirement", toppingsRequirement);
+    setCookie("fancyRequirement", fancyRequirement);
 }
 
 cheater.addEventListener('click', function(e){
